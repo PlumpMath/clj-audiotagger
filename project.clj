@@ -1,4 +1,4 @@
-(defproject clj-audiotagger "0.1.0-SNAPSHOT"
+(defproject clj-audiotagger "0.1.1-SNAPSHOT"
   :description "Useful CLI audio tagger utility/library wrap on top of jaudiotagger and claudio library"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
@@ -6,7 +6,6 @@
   :source-paths ["src/clj"]
   :java-source-paths ["src/java"]
   :dependencies [[org.clojure/clojure "1.8.0"]
-                ;[org/jaudiotagger "2.0.3"]
                  [net.jthink/jaudiotagger "2.2.3"]
                  [claudio "0.1.3"]
                  [org.clojure/tools.cli "0.3.5"]

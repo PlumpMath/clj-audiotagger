@@ -7,21 +7,22 @@ This change log follows the conventions of [keepachangelog.com](http://keepachan
 
 ### Changed
 
-- place holder
+- N/A
 
-## [0.1.1] - 2016-05-23
+## [0.1.1] - 2016-05-27
 
 ### Changed
 
-- place holder
+- Use latest version of jaudiotagger
+- Use 'src/java' and 'src/clj' source structure
 
 ### Removed
 
-- place holder
+- N/A
 
 ### Fixed
 
-- place holder
+- N/A
 
 ## 0.1.0 - 2016-05-23
 
