@@ -61,6 +61,7 @@ The two tags are :track and :track-total"
   (doseq [[idx item] (map-indexed vector mp3-files)]
     (update-tag! item {:track (str (inc idx))
                        :track-total (str (count mp3-files))})))
+
 (defn show-tags
   "Show the tags information for list of files"
   [mp3-files]
