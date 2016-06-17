@@ -26,13 +26,13 @@ Available via [clojars.org/clj-audiotagger](https://clojars.org/clj-audiotagger)
 - Leiningen
 
 ```clojure
-[clj-audiotagger "0.1.0-SNAPSHOT"]
+[clj-audiotagger "0.1.3-SNAPSHOT"]
 ```
 
 - Gradle
 
 ```
-compile "clj-audiotagger:clj-audiotagger:0.1.0-SNAPSHOT"
+compile "clj-audiotagger:clj-audiotagger:0.1.3-SNAPSHOT"
 ```
 
 - Maven
@@ -41,7 +41,7 @@ compile "clj-audiotagger:clj-audiotagger:0.1.0-SNAPSHOT"
 <dependency>
   <groupId>clj-audiotagger</groupId>
   <artifactId>clj-audiotagger</artifactId>
-  <version>0.1.0-SNAPSHOT</version>
+  <version>0.1.3-SNAPSHOT</version>
 </dependency>
 ```
 
@@ -51,7 +51,7 @@ compile "clj-audiotagger:clj-audiotagger:0.1.0-SNAPSHOT"
 - Clojure
 - Leiningen
 
-### Build and run locally
+### Installation
 
 - Clone the repository
 
@@ -61,17 +61,43 @@ mkdir -p ~/projects
 
 # clone the repository
 git clone git@github.com:agilecreativity/clj-audiotagger.git ~/projects
+
+# Generate the standalone binary (to be installed to `~/bin`)
+mkdir -p ~/bin
+
+# Now build the standalone executable using [lein-bin]
+lein bin
 ```
 
-- Get some help
+You should get output like the following:
 
-Run the following to get some help
+```
+$lein bin
+Compiling com.agilecreativity.clj_audiotagger.util
+Compiling com.agilecreativity.clj_audiotagger.main
+Compiling com.agilecreativity.clj_audiotagger.cli
+Created /home/bchoomnuan/projects/clj-audiotagger/target/clj-audiotagger-0.1.3-SNAPSHOT.jar
+Created /home/bchoomnuan/clj-audiotagger/target/clj-audiotagger-0.1.3-SNAPSHOT-standalone.jar
+Creating standalone executable: /home/bchoomnuan/projects/clj-audiotagger/target/clj-audiotagger
+Copying binary to #object[java.io.File 0x3e8799f /home/bchoomnuan/bin]
+```
+
+Note that the executable is called `clj-audiotagger` and is automatically copied to `~/bin/clj-audiotagger`
+
+### Basic Usage
+
+Assume that the `~/bin` is in your `$PATH`
 
 ```sh
-lein run -- --help`
+# Run the command without any options will print default usage
+
+~/bin/clj-audiotagger`
+
+# Or if ~/bin is your executable path you could just type
+clj-audiotagger
 ```
 
-Which should produce something like
+Which should produce something like:
 
 ```
 Update mp3 id3 tag using simple rules.
@@ -104,17 +130,17 @@ Please refer to the manual page for more information.
 - To rename all the mp3 files to the filename try
 
 ```sh
-lein run -- --base-dir ~/media/mp3s --file-name-as-title
+clj-audiotagger --base-dir ~/media/mp3s --file-name-as-title
 ```
 
 - To update the play index try
 
 ```sh
 # long version
-lein run -- --base-dir ~/media/mp3s --position-as-track-order
+clj-audiotagger --base-dir ~/media/mp3s --position-as-track-order
 
 # Or short version
-lein run -- --base-dir ~/media/mp3s -t
+clj-audiotagger -b ~/media/mp3s -t
 ```
 
 - To update the common attributes of a given list of files
@@ -123,7 +149,7 @@ e.g. Good use-case if have the media sharing the same type of attribute (artist,
 
 ```sh
 # Using short version of the command
-lein run -- -b ~/media/mp3s -u album "Metallica Greatest Hits" artist "Metallica" comment "My fav band"
+clj-audiotagger -b ~/media/mp3s -u album "Metallica Greatest Hits" artist "Metallica" comment "My fav band"
 ```
 
 for list of the attribute please see [claudio][] for attribute you can set.
@@ -141,8 +167,8 @@ comment COMMENT
 
 ## TODO
 
-- Add documentation on how to run it with [lien-bin][]
-- Add the ability to update of cover image for a file
+- [x] Add documentation on how to run it with [lein-bin][]
+- [ ] Add the ability to update of cover image for a file
 
 ## Useful Links
 

@@ -5,6 +5,15 @@ This change log follows the conventions of [keepachangelog.com](http://keepachan
 
 ## [Unreleased]
 
+- N/A
+
+## [0.1.3] - 2016-06-17
+
+### Changed
+
+- Produce the self-executable binary using [lein-bin](https://github.com/Raynes/lein-bin)
+- Update document in README.md
+
 ## [0.1.2] - 2016-06-17
 
 ### Fixed

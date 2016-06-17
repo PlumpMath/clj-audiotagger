@@ -1,5 +1,6 @@
 #!/bin/bash
 # To get the source from Maven first generate the POM file from Clojure
+# for anything else see `lein help`
 lein pom
 
 # Then get the dependencies
@@ -7,5 +8,3 @@ mvn dependency:sources
 
 # Or even make it possible to open the Java file in Eclipse
 mvn eclipse:eclipse
-
-# for anything else see `lein help`
