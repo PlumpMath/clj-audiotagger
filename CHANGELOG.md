@@ -5,9 +5,13 @@ This change log follows the conventions of [keepachangelog.com](http://keepachan
 
 ## [Unreleased]
 
-### Changed
+## [0.1.2] - 2016-06-17
 
-- N/A
+### Fixed
+
+- Fix the namespace error in main.clj (bug)
+
+## 0.1.0 - 2016-05-23
 
 ## [0.1.1] - 2016-05-27
 

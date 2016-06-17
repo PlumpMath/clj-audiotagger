@@ -62,4 +62,4 @@
             (throw (Exception. "Tag-value pairs must be even number")))
           (doseq [[k v] (partition 2 arguments)]
             (util/update-common-tags! files {(keyword k) v}))))
-      (Util/show-tags files))))
+      (util/show-tags files))))
