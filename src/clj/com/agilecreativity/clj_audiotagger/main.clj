@@ -9,11 +9,6 @@
             [me.raynes.fs.compression :refer :all])
   (:gen-class))
 
-(defn mp3-files
-  "List all mp3 files from a given directory ignore case for extension"
-  [base-dir]
-  (filter #(contains? #{".mp3" ".MP3"} (fs/extension %)) (fs/list-dir base-dir)))
-
 (defn -main [& args]
   ;; Turn off the logging for now
   (.setLevel (java.util.logging.Logger/getLogger "org.jaudiotagger")
@@ -21,7 +16,7 @@
 
   (let [{:keys [options arguments errors summary]}
         (parse-opts args cli-options :in-order true)]
-    (if-let [files (mp3-files (:base-dir options))]
+    (if-let [files (util/mp3-files (:base-dir options))]
       (if (empty? files)
         (println "No mp3 file found in your given directory :" (:base-dir options))))
 
@@ -33,16 +28,14 @@
 
       ;; Directory having no mp3 files
       (:base-dir options)
-      (if (empty? (mp3-files (:base-dir options)))
+      (if (empty? (util/mp3-files (:base-dir options)))
         (exit 1 (usage summary)))
 
       ;; Other errors if any
       errors (exit 1 (error-msg errors)))
 
-    ;; If we get here, we have the files and some valid options
-    (let [files (mp3-files (:base-dir options))]
-
-      ;; Let's check our options and run appropriate task
+    ;; If we get here, we have the files with valid user options
+    (let [files (util/mp3-files (:base-dir options))]
       (println "Your options: " options)
       (if (:file-name-as-title options)
         (doseq [file files]
@@ -53,7 +46,7 @@
 
       (if (:position-as-track-order options)
         (do
-          (println "Set the track to posion of the input files:")
+          (println "Set the track to position of the fil-files")
           (util/set-track-to-position! files)))
 
       (if (:set-shared-tags options)
@@ -62,4 +55,10 @@
             (throw (Exception. "Tag-value pairs must be even number")))
           (doseq [[k v] (partition 2 arguments)]
             (util/update-common-tags! files {(keyword k) v}))))
+
+      (if-let [cover-file (:cover options)]
+        (if (fs/exists? (io/file cover-file))
+          (util/update-cover-file! files (io/file cover-file))
+          (println "Can't update cover file. May be your cover file is not valid or not readable!")))
+
       (util/show-tags files))))

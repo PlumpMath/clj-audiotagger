@@ -1,4 +1,4 @@
-(defproject clj-audiotagger "0.1.3-SNAPSHOT"
+(defproject clj-audiotagger "0.1.4-SNAPSHOT"
   :description "Useful CLI audio tagger utility/library wrap on top of jaudiotagger and claudio library"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
@@ -15,5 +15,6 @@
   :bin {:name "clj-audiotagger"
         :bin-path "~/bin"
         :bootclasspath true}
-  :plugins [[lein-bin "0.3.4"]]
+  :plugins [[lein-bin "0.3.4"]
+            [lein-cljfmt "0.5.3"]]
   :main com.agilecreativity.clj_audiotagger.main)

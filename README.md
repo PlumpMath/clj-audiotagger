@@ -102,16 +102,18 @@ Which should produce something like:
 ```
 Update mp3 id3 tag using simple rules.
 
-Usage: clj-audiotagger [options]
+Usage: clj_audiotagger [options]
   -b, --base-dir DIR             .  The staring directory
   -f, --file-name-as-title          Use file name as title
   -t, --position-as-track-order     Use position as track order
   -u, --set-shared-tags             Update shared tags
+  -c, --cover COVER_FILE            The shared cover file that will be updated to
   -h, --help
 
 Options:
 
 --base-dir DIR starting directory
+--cover COVER_FILE the shared cover file if any
 --filename-as-title
 --position-as-track-order
 --set-shared-tags tags
@@ -165,10 +167,24 @@ year    YEAR
 comment COMMENT
 ```
 
-## TODO
+- To update the cover image for all files in a given directory (both jpg and png are supported)
+
+```sh
+# If you have the png file
+clj-audiotagger -b ~/media/mp3s \
+                -u album "Metallica Greatest Hits" artist "Metallica" comment "My fav band" \
+                -c music/metallica-cover.png
+
+# If you have the jpg file
+clj-audiotagger -b ~/media/mp3s \
+                -u album "Continuum" artist "John Mayer" \
+                -c music/john-mayer.jpg
+```
+
+## Roadmaps/Todos
 
 - [x] Add documentation on how to run it with [lein-bin][]
-- [ ] Add the ability to update of cover image for a file
+- [x] Add the ability to update of cover image for a file
 
 ## Useful Links
 
@@ -182,6 +198,12 @@ Some links I found useful while developing this library
 - [Good example on Java interop with Clojure](http://www.braveclojure.com/java/)
 - [Working with file in Clojure](http://clojure-doc.org/articles/cookbooks/files_and_directories.html)
 - [Java interop with Clojure](http://www.braveclojure.com/java/)
+- [Mp3 cover art](http://www.richardfarrar.com/embedding-album-art-in-mp3-files/)
+- [Random links related to embedded cover art](http://blog.magnatune.com/2012/06/album-art-now-embedded-in-our-mp3-files.html)
+- [sample media with cover art](http://download.wavetlan.com/SVV/AlbumArt/index.html)
+- [Good way to list Java's medthod from Clojure's REPL](http://stackoverflow.com/questions/5821286/how-can-i-get-the-methods-of-a-java-class-from-clojure)
+- [List of PRs related to jaudiotagger](https://bitbucket.org/ijabz/jaudiotagger/issues?status=new&status=open)
+- [List of GUI player for Arch Linux](https://wiki.archlinux.org/index.php/List_of_applications/Multimedia#GUI_players)
 
 ## License
 

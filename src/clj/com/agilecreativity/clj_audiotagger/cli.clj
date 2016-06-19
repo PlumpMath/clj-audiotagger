@@ -11,6 +11,8 @@
     "Use position as track order"]
    ["-u" "--set-shared-tags"
     "Update shared tags"]
+   ["-c" "--cover COVER_FILE"
+    "The shared cover file that will be updated to"]
    ["-h" "--help"]])
 
 (defn usage [options-summary]
@@ -22,6 +24,7 @@
         "Options:"
         ""
         "--base-dir DIR starting directory"
+        "--cover COVER_FILE the shared cover file if any"
         "--filename-as-title"
         "--position-as-track-order"
         "--set-shared-tags tags"

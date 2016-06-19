@@ -7,6 +7,14 @@ This change log follows the conventions of [keepachangelog.com](http://keepachan
 
 - N/A
 
+## [0.1.4] - 2016-06-19
+
+### Added
+
+- Support the update of cover file!
+- Update document in README.md
+- Cleanup the public APIs
+
 ## [0.1.3] - 2016-06-17
 
 ### Changed

@@ -1,11 +1,50 @@
 (ns com.agilecreativity.clj_audiotagger.util
-  (:require [claudio.id3     :as id3]
+  (:require [claudio.id3 :as id3]
             [clojure.java.io :as io]
-            [clojure.string  :as string]
-            [me.raynes.fs    :as fs]
+            [clojure.string :as string]
+            [me.raynes.fs :as fs]
             [me.raynes.fs.compression :refer :all])
-  (:import org.jaudiotagger.audio.AudioFileIO
+  (:import java.io.RandomAccessFile
+           org.jaudiotagger.audio.AudioFile
+           org.jaudiotagger.audio.AudioFileIO
+           org.jaudiotagger.audio.AudioHeader
            org.jaudiotagger.tag.FieldKey))
+
+;; Add for update cover-art file
+(defn- get-extension
+  "Extract the file extension from a given file object"
+  [file-path]
+  (subs (fs/extension file-path) 1))
+
+(defn- delete-cover-file!
+  "Delete the existing cover file from the mp3 media"
+  [mp3-file]
+  (if-let [audio-file (org.jaudiotagger.audio.AudioFileIO/read mp3-file)]
+    (if-let [tag (.getTag audio-file)]
+      (if-let [artworks (.getArtworkList tag)]
+        (do
+          (.deleteArtworkField tag)
+          (.commit audio-file))))))
+
+(defn- add-cover-file!
+  "Add the new cover file to the mp3 media"
+  [mp3-file cover-file]
+  (if-let [audio-file (org.jaudiotagger.audio.AudioFileIO/read mp3-file)]
+    (if-let [tag (.getTag audio-file)]
+      (let [image-file (java.io.RandomAccessFile. cover-file "r")
+            image-data (byte-array (.length image-file))
+            image-type (str "image/" (get-extension cover-file))]
+        (do
+          (.read image-file image-data)
+          (.addField (.getTag audio-file) (.createArtworkField tag image-data image-type))
+          (.commit audio-file)
+          (org.jaudiotagger.audio.AudioFileIO/write audio-file))))))
+
+;; Public APIs starts
+(defn mp3-files
+  "List all mp3 files from a given directory ignore case for extension"
+  [base-dir]
+  (filter #(contains? #{".mp3" ".MP3"} (fs/extension %)) (fs/list-dir base-dir)))
 
 (defn update-tag!
   "Update multiple id3 tags for a single mp3 file
@@ -61,6 +100,13 @@
   (doseq [[idx item] (map-indexed vector mp3-files)]
     (update-tag! item {:track (str (inc idx))
                        :track-total (str (count mp3-files))})))
+
+(defn update-cover-file!
+  "Update the cover for all files at once"
+  [mp3-files cover-file]
+  (doseq [file mp3-files]
+    (delete-cover-file! file)
+    (add-cover-file! file cover-file)))
 
 (defn show-tags
   "Show the tags information for list of files"
