@@ -26,13 +26,13 @@ Available via [clojars.org/clj-audiotagger](https://clojars.org/clj-audiotagger)
 - Leiningen
 
 ```clojure
-[clj-audiotagger "0.1.3-SNAPSHOT"]
+[clj-audiotagger "0.1.4-SNAPSHOT"]
 ```
 
 - Gradle
 
 ```
-compile "clj-audiotagger:clj-audiotagger:0.1.3-SNAPSHOT"
+compile "clj-audiotagger:clj-audiotagger:0.1.4-SNAPSHOT"
 ```
 
 - Maven
@@ -41,7 +41,7 @@ compile "clj-audiotagger:clj-audiotagger:0.1.3-SNAPSHOT"
 <dependency>
   <groupId>clj-audiotagger</groupId>
   <artifactId>clj-audiotagger</artifactId>
-  <version>0.1.3-SNAPSHOT</version>
+  <version>0.1.4-SNAPSHOT</version>
 </dependency>
 ```
 
