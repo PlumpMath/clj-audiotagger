@@ -1,4 +1,4 @@
-(defproject clj-audiotagger "0.1.4-SNAPSHOT"
+(defproject clj-audiotagger "0.2.0"
   :description "Useful CLI audio tagger utility/library wrap on top of jaudiotagger and claudio library"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}

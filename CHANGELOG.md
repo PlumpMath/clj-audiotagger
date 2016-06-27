@@ -7,6 +7,12 @@ This change log follows the conventions of [keepachangelog.com](http://keepachan
 
 - N/A
 
+## [0.2.0] - 2016-06-26
+
+### Added
+
+- First official non-snapshot release
+
 ## [0.1.4] - 2016-06-19
 
 ### Added

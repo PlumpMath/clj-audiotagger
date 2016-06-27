@@ -26,13 +26,13 @@ Available via [clojars.org/clj-audiotagger](https://clojars.org/clj-audiotagger)
 - Leiningen
 
 ```clojure
-[clj-audiotagger "0.1.4-SNAPSHOT"]
+[clj-audiotagger "0.2.0"]
 ```
 
 - Gradle
 
 ```
-compile "clj-audiotagger:clj-audiotagger:0.1.4-SNAPSHOT"
+compile "clj-audiotagger:clj-audiotagger:0.2.0"
 ```
 
 - Maven
@@ -41,7 +41,7 @@ compile "clj-audiotagger:clj-audiotagger:0.1.4-SNAPSHOT"
 <dependency>
   <groupId>clj-audiotagger</groupId>
   <artifactId>clj-audiotagger</artifactId>
-  <version>0.1.4-SNAPSHOT</version>
+  <version>0.2.0</version>
 </dependency>
 ```
 
@@ -73,13 +73,10 @@ You should get output like the following:
 
 ```
 $lein bin
-Compiling com.agilecreativity.clj_audiotagger.util
-Compiling com.agilecreativity.clj_audiotagger.main
-Compiling com.agilecreativity.clj_audiotagger.cli
-Created /home/bchoomnuan/projects/clj-audiotagger/target/clj-audiotagger-0.1.3-SNAPSHOT.jar
-Created /home/bchoomnuan/clj-audiotagger/target/clj-audiotagger-0.1.3-SNAPSHOT-standalone.jar
-Creating standalone executable: /home/bchoomnuan/projects/clj-audiotagger/target/clj-audiotagger
-Copying binary to #object[java.io.File 0x3e8799f /home/bchoomnuan/bin]
+Created /home/bchoomnuan/codes/others/clj-audiotagger/target/clj-audiotagger-0.2.0.jar
+Created /home/bchoomnuan/codes/others/clj-audiotagger/target/clj-audiotagger-0.2.0-standalone.jar
+Creating standalone executable: /home/bchoomnuan/codes/others/clj-audiotagger/target/clj-audiotagger
+Copying binary to #object[java.io.File 0x3cc79c02 /home/bchoomnuan/bin]
 ```
 
 Note that the executable is called `clj-audiotagger` and is automatically copied to `~/bin/clj-audiotagger`
