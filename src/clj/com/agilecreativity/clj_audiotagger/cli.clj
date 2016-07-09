@@ -12,7 +12,7 @@
    ["-u" "--set-shared-tags"
     "Update shared tags"]
    ["-c" "--cover COVER_FILE"
-    "The shared cover file that will be updated to"]
+    "The shared  file that will  updated to"]
    ["-h" "--help"]])
 
 (defn usage [options-summary]
