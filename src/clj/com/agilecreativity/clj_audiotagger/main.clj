@@ -46,7 +46,7 @@
 
       (if (:position-as-track-order options)
         (do
-          (println "Set the track to position of the fil-files")
+          (println "Set the track to position of the input files")
           (util/set-track-to-position! files)))
 
       (if (:set-shared-tags options)
