@@ -1,6 +1,7 @@
 ## clj-audiotagger
 
 [![Clojars Project](https://img.shields.io/clojars/v/clj-audiotagger.svg)](https://clojars.org/clj-audiotagger)
+[![Dependencies Status](https://jarkeeper.com/agilecreativity/clj-audiotagger/status.svg)](https://jarkeeper.com/agilecreativity/clj-audiotagger)
 
 Clojure library designed to make it easy to manipulate/cleanup bad mp3 tag with UTF-8 support.
 
